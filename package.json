@@ -1,0 +1,22 @@
+{
+  "name": "multi-chain-gas-oracle",
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "test": "vitest run",
+    "build": "tsc"
+  },
+  "dependencies": {
+    "@lucid-dreams/agent-kit": "^0.2.24",
+    "@hono/node-server": "^2.0.12",
+    "hono": "^4.12.32",
+    "x402-hono": "^1.2.0",
+    "zod": "^3.23.8"
+  },
+  "devDependencies": {
+    "vitest": "^2.1.9",
+    "typescript": "^5.5.4",
+    "@types/node": "^22.0.0"
+  },
+  "description": "Gas prices on EVM chains for AI agents"
+}
