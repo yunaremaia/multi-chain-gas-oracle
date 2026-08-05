@@ -169,6 +169,32 @@ app.get("/.well-known/x402.json", (c: any) =>
   }),
 );
 
+// OpenAPI discovery
+app.get("/openapi.json", (c: any) => {
+  const spec = {
+    openapi: "3.0.3",
+    info: { title: "Multi-Chain Gas Oracle", version: "1.0.0" },
+    servers: [{ url: "https://multi-chain-gas-oracle.vercel.app" }],
+    paths: {
+      "/entrypoints/gas/invoke": {
+        post: {
+          summary: "Real-time gas prices for an EVM chain",
+          requestBody: { content: { "application/json": { schema: { type: "object" } } } },
+          responses: { "200": { description: "Gas prices" }, "402": { description: "x402 payment required" } },
+        },
+      },
+      "/entrypoints/gas_multi/invoke": {
+        post: {
+          summary: "Real-time gas prices across multiple EVM chains",
+          requestBody: { content: { "application/json": { schema: { type: "object" } } } },
+          responses: { "200": { description: "Gas prices" }, "402": { description: "x402 payment required" } },
+        },
+      },
+    },
+  };
+  return c.json(spec);
+});
+
 // llms.txt
 app.get("/llms.txt", (c: any) => {
   const lines = [
